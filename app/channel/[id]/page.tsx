@@ -1,4 +1,4 @@
-const Page = ({ params }) => {
+const Page = ({ params }: any) => {
   return <div>channel/[{params.id}]</div>;
 };
 

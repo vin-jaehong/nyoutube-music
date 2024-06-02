@@ -1,4 +1,4 @@
-const layout = ({ children }) => {
+const layout = ({ children }: any) => {
   return <div>{children}</div>;
 };
 
