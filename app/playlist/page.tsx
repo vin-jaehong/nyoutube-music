@@ -1,4 +1,4 @@
-const Page = ({ searchParams }) => {
+const Page = ({ searchParams }: any) => {
   return <div>playlist {searchParams.list}</div>;
 };
 
