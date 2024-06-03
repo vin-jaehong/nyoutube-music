@@ -6,6 +6,8 @@ import { usePathname } from 'next/navigation';
 import { useMemo } from 'react';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
+import { dummyPlaylistArray } from '@/lib/dummy-data';
+import PlayListNav from './play-list-nav';
 
 const Navigator = () => {
   const pathname = usePathname();
@@ -59,10 +61,22 @@ const Navigator = () => {
         <div className="w-full h-[1px] bg-neutral-700"></div>
       </section>
       <section className="px-6">
-        <div className="flex flex-row items-center bg-neutral-700 my-6 rounded-3xl p-2 font-[200] justify-center gap-2 hover:bg-neutral-600 cursor-pointer">
+        <div className="flex flex-row items-center bg-neutral-800 my-6 rounded-3xl p-2 font-[200] justify-center gap-2 hover:bg-neutral-700 cursor-pointer">
           <FiPlus size={24} />
           <span>새 재생목록</span>
         </div>
+      </section>
+      <section>
+        <ul className="flex flex-col">
+          {dummyPlaylistArray.map((playlist) => {
+            return (
+              <PlayListNav
+                key={`playlist-item-${playlist.id}`}
+                playlist={playlist}
+              ></PlayListNav>
+            );
+          })}
+        </ul>
       </section>
     </div>
   );
