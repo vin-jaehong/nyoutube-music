@@ -2,6 +2,7 @@
 
 import { GridLoader } from 'react-spinners';
 
+// comment
 const ErrorMessage = () => {
   return (
     <div className="flex flex-col justify-center items-center gap-4 my-20">
