@@ -4,6 +4,7 @@ import PagePadding from '@/components/page-pading';
 import { FaChromecast } from 'react-icons/fa';
 import { FiSearch } from 'react-icons/fi';
 
+// comment
 const Header = ({ children }: { children: React.ReactNode }) => {
   return (
     <header className="relative overflow-y-auto w-full h-full">
