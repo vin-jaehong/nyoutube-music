@@ -2,6 +2,7 @@
 
 import { IoMdPlayCircle } from 'react-icons/io';
 
+// play list nav component
 const PlayListNav = ({ playlist }: any) => {
   const { id, owner, playlistName, songlist } = playlist;
 
