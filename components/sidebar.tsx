@@ -1,6 +1,7 @@
 import Logo from './elements/Logo';
 import Navigator from './elements/Navigator';
 
+// sidebar component
 const sidebar = ({ children }: any) => {
   return (
     <div className="flex flex-row h-full">
