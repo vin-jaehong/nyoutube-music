@@ -1,3 +1,5 @@
+'use client';
+
 import Image from 'next/image';
 import UserIcon from '@/components/user-icon';
 import PagePadding from '@/components/page-pading';
@@ -15,15 +17,23 @@ import {
 } from '@/components/ui/drawer';
 import Logo from './elements/Logo';
 import Navigator from './elements/Navigator';
+import { useState } from 'react';
 
 const HeaderDrawer = ({ children }: { children: React.ReactNode }) => {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
-    <Drawer direction="left">
+    <Drawer direction="left" open={isOpen} onOpenChange={setIsOpen}>
       <DrawerTrigger>{children}</DrawerTrigger>
       <DrawerContent className="w-[240px] h-full">
         <div className="py-3">
           <div className="px-3">
-            <Logo />
+            <Logo
+              isInDrawer={true}
+              onClickClose={() => {
+                setIsOpen(false);
+              }}
+            />
           </div>
           <Navigator />
         </div>
