@@ -19,6 +19,7 @@ import Logo from './elements/Logo';
 import Navigator from './elements/Navigator';
 import { useEffect, useRef, useState } from 'react';
 import { cn } from '@/lib/utils';
+import useUIState from '@/hooks/useUIState';
 
 const HeaderDrawer = ({ children }: { children: React.ReactNode }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -44,6 +45,7 @@ const HeaderDrawer = ({ children }: { children: React.ReactNode }) => {
 };
 
 const Header = ({ children }: { children: React.ReactNode }) => {
+  const { headerImageSrc } = useUIState();
   const [isScrolled, setIsScrolled] = useState(false);
   const headRef = useRef<null | HTMLElement>(null);
 
@@ -66,7 +68,10 @@ const Header = ({ children }: { children: React.ReactNode }) => {
         <div className="relative h-[400px] w-full">
           <Image
             fill
-            src="https://images.unsplash.com/photo-1707833558984-3293e794031c"
+            src={
+              headerImageSrc ||
+              'https://images.unsplash.com/photo-1707833558984-3293e794031c'
+            }
             alt="mediaItem"
             className="object-cover"
           />
