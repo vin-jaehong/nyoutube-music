@@ -75,11 +75,13 @@ const Header = ({ children }: { children: React.ReactNode }) => {
         </div>
       </section>
       <section
-        className={`sticky top-0 left-0 z-10 ${isScrolled && 'bg-black'}`}
+        className={`sticky top-0 left-0 z-10 ${
+          isScrolled && 'bg-black transition-colors'
+        }`}
       >
         <PagePadding>
           <div className="flex flex-row justify-between items-center h-[64px]">
-            <article className="hidden lg:flex flex-row items-center h-[42px] min-w-[480px] bg-[rgba(0,0,0,0.14)] rounded-2xl gap-[16px] px-[16px]">
+            <article className="hidden lg:flex flex-row items-center h-[42px] min-w-[480px] bg-[rgba(0,0,0,0.14)] rounded-2xl gap-[16px] px-[16px] border border-neutral-500">
               <div>
                 <FiSearch size={24} />
               </div>
