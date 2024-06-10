@@ -17,7 +17,8 @@ import {
 } from '@/components/ui/drawer';
 import Logo from './elements/Logo';
 import Navigator from './elements/Navigator';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { cn } from '@/lib/utils';
 
 const HeaderDrawer = ({ children }: { children: React.ReactNode }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -43,8 +44,24 @@ const HeaderDrawer = ({ children }: { children: React.ReactNode }) => {
 };
 
 const Header = ({ children }: { children: React.ReactNode }) => {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const headRef = useRef<null | HTMLElement>(null);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollValue = headRef?.current?.scrollTop;
+      setIsScrolled(scrollValue !== 0);
+    };
+
+    headRef?.current?.addEventListener('scroll', handleScroll);
+
+    return () => {
+      headRef?.current?.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
-    <header className="relative overflow-y-auto w-full h-full">
+    <header ref={headRef} className="relative overflow-y-auto w-full h-full">
       <section className="absolute top-0 w-full">
         <div className="relative h-[400px] w-full">
           <Image
@@ -57,7 +74,9 @@ const Header = ({ children }: { children: React.ReactNode }) => {
           <div className="absolute top-0 bg-gradient-to-t from-black w-full h-[400px]"></div>
         </div>
       </section>
-      <section className="sticky">
+      <section
+        className={`sticky top-0 left-0 z-10 ${isScrolled && 'bg-black'}`}
+      >
         <PagePadding>
           <div className="flex flex-row justify-between items-center h-[64px]">
             <article className="hidden lg:flex flex-row items-center h-[42px] min-w-[480px] bg-[rgba(0,0,0,0.14)] rounded-2xl gap-[16px] px-[16px]">
