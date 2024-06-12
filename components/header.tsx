@@ -44,7 +44,6 @@ const HeaderDrawer = ({ children }: { children: React.ReactNode }) => {
   );
 };
 
-// header component
 const Header = ({ children }: { children: React.ReactNode }) => {
   const { headerImageSrc } = useUIState();
   const [isScrolled, setIsScrolled] = useState(false);
