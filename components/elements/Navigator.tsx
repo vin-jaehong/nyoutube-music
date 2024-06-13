@@ -9,6 +9,7 @@ import { cn } from '@/lib/utils';
 import { dummyPlaylistArray } from '@/lib/dummy-data';
 import PlayListNav from './play-list-nav';
 
+// navigator component
 const Navigator = () => {
   const pathname = usePathname();
 
